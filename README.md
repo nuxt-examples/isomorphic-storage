@@ -29,12 +29,17 @@ vuex mutations and actions:
 
 - `init(context)` should be called inside `nuxtServerInit` with `NuxtContext` object to
   initialize ls module with cookie values, and also inside `nuxtClientInit` for
-  initializing the module
-- `get(key, defaultValue = {})` obtains a value with given key from isomorphic storage
-- `set(key, value)` saves value under given key in isomorphic storage
-- `mutations` contains predefined `update` and `restore` mutations that save and load
-  vuex module content to/from storage, respectively
-- `actions` contains predefined actions for server and client module initialization
+  initializing the module.
+
+- `get(key, defaultValue = {})` obtains a value with given key from isomorphic storage.
+
+- `set(key, value)` saves value under given key in isomorphic storage.
+
+- `mutations(lsKey)` creates predefined `update` and `restore` mutations that save and load
+  vuex module content to/from storage, respectively. Pass it a string that contains a
+  property name for the storage.
+
+- `actions` contains predefined actions for server and client module initialization.
 
 ## Build Setup
 

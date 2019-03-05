@@ -119,10 +119,7 @@ export const mutations = lsKey => ({
  * mutations defined above.
  */
 export const actions = {
-    nuxtClientInit({ commit }) {
-        commit('restore');
-    },
-    nuxtServerInit({ commit }) {
+    loadModuleFromStorage({ commit }) {
         commit('restore');
     }
 };

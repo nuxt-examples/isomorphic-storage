@@ -1,3 +1,5 @@
+const saveableModules = ['saveable'];
+
 export const state = () => ({
 });
 
@@ -5,6 +7,10 @@ export const mutations = {
 };
 
 export const actions = {
-    nuxtServerInit({ dispatch }, context) {},
-    nuxtClientInit({ dispatch }, context) {}
+    async nuxtServerInit({ dispatch }, context) {
+        for (let i = 0; i < saveableModules.length; i++) {
+            // call load action for every saveable module
+            await dispatch(saveableModules[i] + '/loadModuleFromStorage', context);
+        }
+    }
 };
