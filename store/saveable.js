@@ -15,7 +15,7 @@ export const mutations = {
 export const actions = {
     rememberText({ commit }, { text }) {
         commit('setText', text);
-        commit('update');
+        commit('update'); // saves module state
     },
 
     ...ls.actions

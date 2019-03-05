@@ -52,7 +52,52 @@ export default function (context) {
 
 ### 4. Vuex configuration
 
-*// TODO*
+Firstly, define the vuex modules that should be saved. In any of them, import LS utility with
+`import * as ls from '@/assets/utils/ls';` and add pre-defined actions and mutations:
+
+```js
+export const mutations = {
+    // ...your mutations
+    ...ls.mutations(STORAGE_PROPERTY_NAME) // pass a string unique among modules
+};
+export const actions = {
+    // ...your actions
+    ...ls.actions
+};
+```
+
+Then, create an array of saveable module names inside main vuex module
+[@/store/index.js](store/index.js) with `const saveableModules = ['saveable'];`.
+
+After this, add the following code into your nuxtServerInit action:
+
+```js
+export const actions = {
+    async nuxtServerInit({ dispatch }) {
+        for (let i = 0; i < saveableModules.length; i++) {
+            // call load action for every saveable module
+            await dispatch(saveableModules[i] + '/loadModuleFromStorage');
+        }
+    }
+};
+```
+
+### 5. Saving the state
+
+The last step is: inside every module that should be saved, inside any action
+that updates module state so that these updates should be saved, add the following
+line: `commit('update');`. For example, that's how it is done in [@/store/saveable.js](store/saveable.js):
+
+```js
+export const actions = {
+    rememberText({ commit }, { text }) {
+        commit('setText', text);
+        commit('update'); // saves module state
+    }
+    // ...
+};
+```
+
 
 ## Build Setup
 
