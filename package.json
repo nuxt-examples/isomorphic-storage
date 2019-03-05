@@ -1,7 +1,7 @@
 {
-  "name": "i18n",
+  "name": "isomorphic-storage",
   "version": "1.0.0",
-  "description": "Example of complex i18n for nuxt app",
+  "description": "Example of simple isomorphic storage for a nuxt app ",
   "author": "BobNobrain",
   "private": true,
   "scripts": {

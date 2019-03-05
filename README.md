@@ -17,13 +17,9 @@ respectively:
 npm i --save cookie js-cookie
 ```
 
-### 2. Vuex configuration
+### 2. Add LS utility
 
-*// TODO*
-
-### 3. Add LS module
-
-Add a file [@/assets/utils/ls](assets/utils/ls.js). It contains the logic
+Add a file [@/assets/utils/ls.js](assets/utils/ls.js). It contains the logic
 of storing values both in localStorage and cookies and also some helpers: ready-to-use
 vuex mutations and actions:
 
@@ -40,6 +36,23 @@ vuex mutations and actions:
   property name for the storage.
 
 - `actions` contains predefined actions for server and client module initialization.
+
+### 3. Add LS plugin
+
+The plugin will initialize ls instance on application startup. Simply add a file in plugins
+directory ([@/plugins/ls.js](plugins/ls.js)) with the following content:
+
+```js
+import * as ls from '@/assets/utils/ls';
+
+export default function (context) {
+    ls.init(context);
+}
+```
+
+### 4. Vuex configuration
+
+*// TODO*
 
 ## Build Setup
 
