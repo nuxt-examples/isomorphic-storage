@@ -1,6 +1,6 @@
-# i18n
+# isomorphic-storage
 
-> Example of complex i18n for nuxt app
+> Example of simple isomorphic storage for a nuxt app
 
 ## Build Setup
 
