@@ -22,6 +22,9 @@ export default {
         remember() {
             this.$store.dispatch('saveable/rememberText', { text: this.text });
         }
+    },
+    created() {
+        this.text = this.$store.state.saveable.text;
     }
 };
 </script>
