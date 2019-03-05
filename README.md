@@ -25,7 +25,16 @@ npm i --save cookie js-cookie
 
 Add a file [@/assets/utils/ls](assets/utils/ls.js). It contains the logic
 of storing values both in localStorage and cookies and also some helpers: ready-to-use
-vuex mutations and actions.
+vuex mutations and actions:
+
+- `init(context)` should be called inside `nuxtServerInit` with `NuxtContext` object to
+  initialize ls module with cookie values, and also inside `nuxtClientInit` for
+  initializing the module
+- `get(key, defaultValue = {})` obtains a value with given key from isomorphic storage
+- `set(key, value)` saves value under given key in isomorphic storage
+- `mutations` contains predefined `update` and `restore` mutations that save and load
+  vuex module content to/from storage, respectively
+- `actions` contains predefined actions for server and client module initialization
 
 ## Build Setup
 
