@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         remember() {
-            // TODO
+            this.$store.dispatch('rememberText', { text: this.text });
         }
     }
 };
