@@ -23,7 +23,7 @@ npm i --save cookie js-cookie
 
 ### 3. Add LS module
 
-Add a file [@/assets/utils/ls](blob/master/assets/utils/ls.js). It contains the logic
+Add a file [@/assets/utils/ls](assets/utils/ls.js). It contains the logic
 of storing values both in localStorage and cookies and also some helpers: ready-to-use
 vuex mutations and actions.
 
