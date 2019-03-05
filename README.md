@@ -2,6 +2,20 @@
 
 > Example of simple isomorphic storage for a nuxt app
 
+## Purpose
+
+It's often needed to store some data in a persistent storage. `localStorage` can
+solve the problem when you need to store data only for browser; but when doing SSR,
+this data will not be accessible at server. There is a solution: store info in
+cookies, as they are passed to nuxt server every time. This recipe shows how to
+implement such method step-by-step in generalized way.
+
+## Use Cases
+
+- Store authentication data
+- Store user preferences that influence rendering process (e.g. theming, widget manipulation),
+  but cannot be (or just are not) stored server-side
+
 ## Recipe
 
 This repo shows an example of isomorphic data storage that uses `window.localStorage`
@@ -97,6 +111,28 @@ export const actions = {
     // ...
 };
 ```
+
+### 6. Customization
+
+#### 6.1. What if I need to store not the whole module, but only a part of it?
+
+You just need to reimplement `update` mutation for your module, for example:
+
+```js
+export const mutations = {
+    // ...your mutations
+    ...ls.mutations(STORAGE_PROPERTY_NAME), // will add default restore mutation
+    update(state) {
+        ls.save(STORAGE_PROPERTY_NAME, {
+            propToSave: state.propToSave
+        })
+    }
+};
+```
+
+#### 6.2. Adjusting cookie lifetime
+
+You can use additional parameter of `ls.save` method, defined [here](assets/utils/ls.js#L61).
 
 
 ## Build Setup
