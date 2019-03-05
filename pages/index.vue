@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         remember() {
-            this.$store.dispatch('rememberText', { text: this.text });
+            this.$store.dispatch('saveable/rememberText', { text: this.text });
         }
     }
 };
